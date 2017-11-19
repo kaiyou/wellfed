@@ -11,7 +11,7 @@ or provide interactive server lists.
 ## Manifest specification
 
 Most server developpers and server owners will simply want to comply with the
-[Wellfed manifest specification](spec.md).
+[Wellfed manifest specification](SPEC.md).
 
 
 ## Crawlers
