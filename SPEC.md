@@ -10,7 +10,7 @@ expose a JSON structured object by:
 
 A manifest is about exposing metadata regarding a server instance in a
 federation. The purpose of manifests is to be able to display metadata to
-users in a useful way in clients, and to help third party crawl metadata from
+users in a useful way in clients, and to help third parties crawl metadata from
 participating servers and display meaningful server lists.
 
 A manifest is not about exposing technical data specific to a federation, and
@@ -111,7 +111,7 @@ Valid federations are:
 - ``diapora``, the [Diaspora](https://diasporafoundation.org/) federation
 
 Valid relations are:
-- ``owned``, the server is owned by one this server owners
+- ``owned``, the server is owned by one of this server owners
 - ``friend``, server owners are friends
 - ``partner``, server owners are business partners
 - ``helped``, this server owners help the other server owners
@@ -246,7 +246,10 @@ Example :
 
 The dictionary keys are picked among:
 - ``rooms``, number of rooms if applicable
-- ``users``, number of users if applicable
+- ``users``, number of local users if applicable (not including service and
+  bridged users)
+- ``services``, number of service users if applicable, includes bots and
+  bridged users
 - ``links``, number of links to other servers in the federation
 
 Dictionary values are integers representing the number directly.
@@ -256,6 +259,7 @@ Example :
 ```json
 "size": {
   "users": 139,
+  "services": 841,
   "links": 12
 }
 ```
