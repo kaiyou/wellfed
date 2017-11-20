@@ -60,6 +60,22 @@ Example :
 }
 ```
 
+## ``federation`` (type: string)
+
+One of the valid federation types:
+- ``mail``, the global mail service federation
+- ``matrix``, the [Matrix](https://matrix.org) federation
+- ``jabber``, the [Jabber XMPP](https://xmpp.org) federation
+- ``mastodon``, the [Mastodon](https://joinmastodon.org/) fediverse
+- ``diapora``, the [Diaspora](https://diasporafoundation.org/) federation
+- ``none``, any service that is related to a federation but not actively part
+  of one.
+
+Exposing manifests for services other than federations has two purposes:
+displaying some features that are common to federations and other services, and
+being properly referenced when it is mentioned as a relation in a federated
+service.
+
 ## ``owners`` (type: list of dictionaries)
 
 Each dictionary represents a co-owner of the server.
@@ -98,17 +114,10 @@ Example:
 Each dictionary represents a related federated service.
 
 Each dictionary contains the following fields:
-- ``federation``, one of the predefined federation types
+- ``federation``, one of the predefined federation types (see ``federation``)
 - ``relation``, one of the predefined relation types
 - ``server``, the server address
 - ``name``, the server name
-
-Valid federations are:
-- ``mail``, the global mail service federation
-- ``matrix``, the [Matrix](https://matrix.org) federation
-- ``jabber``, the [Jabber XMPP](https://xmpp.org) federation
-- ``mastodon``, the [Mastodon](https://joinmastodon.org/) fediverse
-- ``diapora``, the [Diaspora](https://diasporafoundation.org/) federation
 
 Valid relations are:
 - ``owned``, the server is owned by one of this server owners
