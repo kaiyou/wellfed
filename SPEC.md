@@ -221,6 +221,14 @@ Example :
 "registration": "support"
 ```
 
+## ``deletion`` (type: string)
+
+One of:
+- ``none``, no account deletion is permitted
+- ``suspend``, account can be suspended
+- ``delete``, account and associated data can be deleted
+- ``support``, deletion requires that one first contacts the support team
+
 ## ``reliability`` (type: dictionary)
 
 The dictionary keys are picked among:
@@ -278,6 +286,8 @@ Valid feature types are:
 - ``voip``, VoIP conferencing,
 - ``files``, file hosting service,
 - ``webclient``, a Web client to access the server
+- ``backup``, exportable account backups
+- ``migration``, a data migration service
 - ``other``, any additional feature
 
 Example :
