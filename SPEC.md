@@ -1,4 +1,4 @@
-# Wellfed specification
+n# Wellfed specification
 
 In order to expose metadata about a server (later called a manifest), one must
 expose a JSON structured object by:
@@ -48,7 +48,8 @@ banner.
 # Structure of a manifest
 
 A manifest is JSON object including a single top-level ``application/json``
-key, including an object with any subset of the following keys.
+key, including an object with a mandatory ``federation`` field and any subset
+of the other following fields.
 
 Example :
 
@@ -63,11 +64,11 @@ Example :
 ## ``federation`` (type: string)
 
 One of the valid federation types:
-- ``mail``, the global mail service federation
 - ``matrix``, the [Matrix](https://matrix.org) federation
 - ``jabber``, the [Jabber XMPP](https://xmpp.org) federation
 - ``mastodon``, the [Mastodon](https://joinmastodon.org/) fediverse
-- ``diapora``, the [Diaspora](https://diasporafoundation.org/) federation
+- ``diaspora``, the [Diaspora](https://diasporafoundation.org/) federation
+- ``mail``, the global mail service federation
 - ``none``, any service that is related to a federation but not actively part
   of one.
 
