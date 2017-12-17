@@ -342,7 +342,7 @@
                 "type": "array",
                 "items": {
                   "id": "/properties/application/json/properties/entrypoints/items/properties/children/items",
-                  "type": "object",
+                  "type": "object"
                 }
               }
             }
