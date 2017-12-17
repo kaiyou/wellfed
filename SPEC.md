@@ -1,4 +1,4 @@
-n# Wellfed specification
+# Wellfed specification
 
 In order to expose metadata about a server (later called a manifest), one must
 expose a JSON structured object by:
