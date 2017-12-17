@@ -1,0 +1,354 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://github.com/kaiyou/wellfed",
+  "type": "object",
+  "required": ["application/json"],
+  "properties": {
+    "application/json": {
+      "id": "/properties/application/json",
+      "type": "object",
+      "required": ["federation", "server"],
+      "properties": {
+        "federation": {
+          "id": "/properties/application/json/properties/federation",
+          "type": "string",
+          "enum": ["matrix", "jabber", "mastodon", "diaspora", "mail", "none"],
+          "title": "federation",
+          "description": "The federation this server is part of",
+          "default": ""
+        },
+        "server": {
+          "id": "/properties/application/json/properties/server",
+          "type": "string",
+          "title": "server",
+          "description": "The canonical server name",
+          "default": ""
+        },
+        "name": {
+          "id": "/properties/application/json/properties/name",
+          "type": "string",
+          "title": "name",
+          "description": "This server name",
+          "default": ""
+        },
+        "owners": {
+          "id": "/properties/application/json/properties/owners",
+          "type": "array",
+          "items": {
+            "id": "/properties/application/json/properties/owners/items",
+            "type": "object",
+            "required": ["type", "name"],
+            "properties": {
+              "type": {
+                "id": "/properties/application/json/properties/owners/items/properties/type",
+                "type": "string",
+                "enum": ["person", "nonprofit", "company", "state"],
+                "title": "type",
+                "description": "The owner type",
+                "default": ""
+              },
+              "name": {
+                "id": "/properties/application/json/properties/owners/items/properties/name",
+                "type": "string",
+                "title": "name",
+                "description": "The owner name (fullname, company name, etc.)",
+                "default": ""
+              }
+            }
+          }
+        },
+        "related": {
+          "id": "/properties/application/json/properties/related",
+          "type": "array",
+          "items": {
+            "id": "/properties/application/json/properties/related/items",
+            "type": "object",
+            "required": ["federation", "relation", "server", "name"],
+            "properties": {
+              "federation": {
+                "id": "/properties/application/json/properties/related/items/properties/federation",
+                "type": "string",
+                "enum": ["matrix", "jabber", "mastodon", "diaspora", "mail", "none"],
+                "title": "federation",
+                "description": "The federation this server is part of",
+                "default": ""
+              },
+              "relation": {
+                "id": "/properties/application/json/properties/related/items/properties/relation",
+                "type": "string",
+                "enum": ["owned", "friend", "partner", "helped", "helping"],
+                "title": "relation",
+                "description": "The relation between the described server and this server",
+                "default": ""
+              },
+              "name": {
+                "id": "/properties/application/json/properties/related/items/properties/name",
+                "type": "string",
+                "title": "name",
+                "description": "The display name of the related server",
+                "default": ""
+              },
+              "server": {
+                "id": "/properties/application/json/properties/related/items/properties/server",
+                "type": "string",
+                "title": "server",
+                "description": "The fqdn or federated domain name of the server",
+                "default": ""
+              }
+            }
+          }
+        },
+        "languages": {
+          "id": "/properties/application/json/properties/languages",
+          "type": "array",
+          "items": {
+            "id": "/properties/application/json/properties/languages/items",
+            "type": "string",
+            "title": "language",
+            "description": "ISO639-1 code for one of the main languages spoken on the server",
+            "default": ""
+          }
+        },
+        "locations": {
+          "id": "/properties/application/json/properties/locations",
+          "type": "array",
+          "items": {
+            "id": "/properties/application/json/properties/locations/items",
+            "type": "string",
+            "title": "location",
+            "description": "Alpha2 ISO3166-1 code for a country this server is technicaly or administratively related to",
+            "default": ""
+          }
+        },
+        "description": {
+          "id": "/properties/application/json/properties/description",
+          "type": "string",
+          "title": "description",
+          "description": "Description of the server, using markdown for formatting",
+          "default": ""
+        },
+        "rules": {
+          "id": "/properties/application/json/properties/rules",
+          "type": "string",
+          "title": "rules",
+          "description": "Set of rules for this server, using markdown for formatting",
+          "default": ""
+        },
+        "tags": {
+          "id": "/properties/application/json/properties/tags",
+          "type": "array",
+          "items": {
+            "id": "/properties/application/json/properties/tags/items",
+            "type": "string",
+            "title": "tags",
+            "description": "Short tag (lowercase alpha plus hyphen, maximum length of 50 characters) describing a feature, an ideology, any concept that this server is related to",
+            "default": ""
+          }
+        },
+        "public": {
+          "id": "/properties/application/json/properties/public",
+          "type": "boolean",
+          "title": "public",
+          "description": "Whether this server should be displayed in public lists",
+          "default": false
+        },
+        "registration": {
+          "id": "/properties/application/json/properties/registration",
+          "type": "string",
+          "enum": ["open", "support", "external", "closed"],
+          "title": "registration",
+          "description": "How registration is handled on this server",
+          "default": ""
+        },
+        "deletion": {
+          "id": "/properties/application/json/properties/deletion",
+          "type": "string",
+          "enum": ["none", "suspend", "delete", "support"],
+          "title": "deletion",
+          "description": "How account deletion is handled on this server",
+          "default": ""
+        },
+        "reliability": {
+          "id": "/properties/application/json/properties/reliability",
+          "type": "object",
+          "properties": {
+            "availability": {
+              "id": "/properties/application/json/properties/reliability/properties/availability",
+              "type": "integer",
+              "title": "availability",
+              "description": "General day to day availability",
+              "default": 0
+            },
+            "durability": {
+              "id": "/properties/application/json/properties/reliability/properties/durability",
+              "type": "integer",
+              "title": "durability",
+              "description": "Confidence in long term management",
+              "default": 0
+            },
+            "security": {
+              "id": "/properties/application/json/properties/reliability/properties/security",
+              "type": "integer",
+              "title": "security",
+              "description": "Confidence in technical security",
+              "default": 0
+            },
+            "privacy": {
+              "id": "/properties/application/json/properties/reliability/properties/privacy",
+              "type": "integer",
+              "title": "privacy",
+              "description": "More general privacy concerns, including legal ones",
+              "default": 0
+            }
+          }
+        },
+        "size": {
+          "id": "/properties/application/json/properties/size",
+          "type": "object",
+          "properties": {
+            "rooms": {
+              "id": "/properties/application/json/properties/size/properties/rooms",
+              "type": "integer",
+              "title": "rooms",
+              "description": "Number of rooms if applicable",
+              "default": 0
+            },
+            "users": {
+              "id": "/properties/application/json/properties/size/properties/users",
+              "type": "integer",
+              "title": "users",
+              "description": "Number of local users if applicable (not including service and bridged users)",
+              "default": 0
+            },
+            "services": {
+              "id": "/properties/application/json/properties/size/properties/services",
+              "type": "integer",
+              "title": "services",
+              "description": "Number of service users if applicable, includes bots and bridged users",
+              "default": 0
+            },
+            "links": {
+              "id": "/properties/application/json/properties/size/properties/links",
+              "type": "integer",
+              "title": "links",
+              "description": "Number of links to other servers in the federation",
+              "default": 0
+            }
+          }
+        },
+        "features": {
+          "id": "/properties/application/json/properties/features",
+          "type": "array",
+          "items": {
+            "id": "/properties/application/json/properties/features/items",
+            "type": "object",
+            "required": ["type", "name"],
+            "properties": {
+              "type": {
+                "id": "/properties/application/json/properties/features/items/properties/type",
+                "type": "string",
+                "enum": ["bridge", "voip", "files", "webclient", "backup", "migration", "other"],
+                "title": "type",
+                "description": "The feature type",
+                "default": "other"
+              },
+              "name": {
+                "id": "/properties/application/json/properties/features/items/properties/name",
+                "type": "string",
+                "title": "name",
+                "description": "The feature name",
+                "default": ""
+              },
+              "resources": {
+                "id": "/properties/application/json/properties/features/items/properties/resources",
+                "type": "array",
+                "items": {
+                  "id": "/properties/application/json/properties/features/items/properties/resources/items",
+                  "type": "string",
+                  "title": "resources",
+                  "description": "Resource for this feature (URI, address, etc.)",
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "contacts": {
+          "id": "/properties/application/json/properties/contacts",
+          "type": "array",
+          "items": {
+            "id": "/properties/application/json/properties/contacts/items",
+            "type": "object",
+            "required": ["type", "name"],
+            "properties": {
+              "type": {
+                "id": "/properties/application/json/properties/contacts/items/properties/type",
+                "type": "string",
+                "enum": ["administrative", "technical", "support", "commercial", "legal"],
+                "title": "type",
+                "description": "The contact type",
+                "default": ""
+              },
+              "name": {
+                "id": "/properties/application/json/properties/contacts/items/properties/name",
+                "type": "string",
+                "title": "name",
+                "description": "The contact name",
+                "default": ""
+              },
+              "resources": {
+                "id": "/properties/application/json/properties/contacts/items/properties/resources",
+                "type": "array",
+                "items": {
+                  "id": "/properties/application/json/properties/contacts/items/properties/resources/items",
+                  "type": "string",
+                  "title": "resource",
+                  "description": "Resource for this contact, (URI, address, phone, etc.)",
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "entrypoints": {
+          "id": "/properties/application/json/properties/entrypoints",
+          "type": "array",
+          "items": {
+            "id": "/properties/application/json/properties/entrypoints/items",
+            "type": "object",
+            "required": ["name", "items"],
+            "properties": {
+              "name": {
+                "id": "/properties/application/json/properties/entrypoints/items/properties/name",
+                "type": "string",
+                "title": "name",
+                "description": "The entrypoint name",
+                "default": ""
+              },
+              "items": {
+                "id": "/properties/application/json/properties/entrypoints/items/properties/items",
+                "type": "array",
+                "items": {
+                  "id": "/properties/application/json/properties/entrypoints/items/properties/items/items",
+                  "type": "string",
+                  "title": "item",
+                  "description": "An entrypoint item",
+                  "default": ""
+                }
+              },
+              "children": {
+                "id": "/properties/application/json/properties/entrypoints/items/properties/children",
+                "type": "array",
+                "items": {
+                  "id": "/properties/application/json/properties/entrypoints/items/properties/children/items",
+                  "type": "object",
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
