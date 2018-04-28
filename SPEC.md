@@ -47,17 +47,16 @@ banner.
 
 # Structure of a manifest
 
-A manifest is JSON object including a single top-level ``application/json``
-key, including an object with a mandatory ``federation`` field and any subset
-of the other following fields.
+A manifest is JSON object with mandatory ``federation`` and ``name`` fields,
+then any subset of the other following fields.
 
 Example :
 
 ```json
 {
-  "application/json": {
-    "owners": [],
-  }
+  "name": "my.server.tld",
+  "federation": "matrix",
+  ...
 }
 ```
 
@@ -76,6 +75,12 @@ Exposing manifests for services other than federations has two purposes:
 displaying some features that are common to federations and other services, and
 being properly referenced when it is mentioned as a relation in a federated
 service.
+
+## ``name`` (type: string)
+
+The server name, i.e. its technical name inside the federation, might be a
+fully qualified domain name, a domain name exposing ``SRV`` records, or any
+other technical way of representing a server name inside a federation.
 
 ## ``owners`` (type: list of dictionaries)
 
@@ -117,7 +122,6 @@ Each dictionary represents a related federated service.
 Each dictionary contains the following fields:
 - ``federation``, one of the predefined federation types (see ``federation``)
 - ``relation``, one of the predefined relation types
-- ``server``, the server address
 - ``name``, the server name
 
 Valid relations are:
